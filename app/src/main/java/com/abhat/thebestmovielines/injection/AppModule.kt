@@ -14,7 +14,7 @@ import dagger.Provides
  */
 
 @Module
-class AppModule(val context: Context) {
+class AppModule {
 
     @Provides
     fun provideMovieLinesRepository(): MovieLinesRepository {
@@ -22,7 +22,7 @@ class AppModule(val context: Context) {
     }
 
     @Provides
-    fun provideMovieLinesUseCase(): UseCase<ResponseBody> {
-        return MovieLinesUseCase(MovieLinesSource())
+    fun provideMovieLinesUseCase(movieLinesSource: MovieLinesRepository): UseCase<ResponseBody> {
+        return MovieLinesUseCase(movieLinesSource)
     }
 }
