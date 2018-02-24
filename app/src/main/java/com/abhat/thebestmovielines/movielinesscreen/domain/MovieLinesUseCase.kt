@@ -1,7 +1,7 @@
 package com.abhat.thebestmovielines.movielinesscreen.domain
 
 import com.abhat.thebestmovielines.movielinesscreen.data.response.ResponseBody
-import rx.Single
+import io.reactivex.Single
 import javax.inject.Inject
 
 /**

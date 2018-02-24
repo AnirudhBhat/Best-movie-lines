@@ -28,7 +28,8 @@ class MovieLinesActivity: AppCompatActivity(), MovieLinesView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        App.appComponent.inject(this)
+        (application as App).appComponent.inject(this)
+        //App.appComponent.inject(this)
         setupRecyclerAdapter()
         showLoading()
         //movieLinesPresenter = MovieLinesPresenterImpl(this, MovieLinesUseCase())

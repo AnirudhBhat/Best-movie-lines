@@ -1,6 +1,7 @@
 package com.abhat.thebestmovielines.movielinesscreen.domain
 
-import rx.Single
+import io.reactivex.Single
+
 
 /**
  * Created by Anirudh Uppunda on 13/1/18.

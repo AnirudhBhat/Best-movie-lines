@@ -1,9 +1,10 @@
 package com.abhat.thebestmovielines.network
 
 import com.abhat.thebestmovielines.movielinesscreen.data.response.ResponseBody
+import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
-import rx.Single
+
 
 /**
  * Created by Anirudh Uppunda on 13/1/18.
