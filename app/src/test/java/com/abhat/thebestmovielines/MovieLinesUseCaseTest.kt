@@ -4,10 +4,10 @@ import com.abhat.thebestmovielines.movielinesscreen.data.response.ResponseBody
 import com.abhat.thebestmovielines.movielinesscreen.data.response.data
 import com.abhat.thebestmovielines.movielinesscreen.domain.MovieLinesRepository
 import com.abhat.thebestmovielines.movielinesscreen.domain.MovieLinesUseCase
+import io.reactivex.Single
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.*
-import rx.Single
 
 /**
  * Created by Anirudh Uppunda on 14/1/18.

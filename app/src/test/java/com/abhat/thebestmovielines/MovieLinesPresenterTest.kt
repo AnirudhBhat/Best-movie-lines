@@ -7,11 +7,16 @@ import com.abhat.thebestmovielines.movielinesscreen.domain.MovieLinesRepository
 import com.abhat.thebestmovielines.movielinesscreen.domain.MovieLinesUseCase
 import com.abhat.thebestmovielines.movielinesscreen.presentation.MovieLinesPresenterImpl
 import com.abhat.thebestmovielines.movielinesscreen.presentation.MovieLinesView
+import io.reactivex.Observable
+import io.reactivex.Single
+import io.reactivex.android.plugins.RxAndroidPlugins
+import io.reactivex.schedulers.Schedulers
+import net.bytebuddy.implementation.bytecode.Throw
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentCaptor
 import org.mockito.Mockito.*
-import rx.Single
+
 
 /**
  * Created by Anirudh Uppunda on 14/1/18.
@@ -22,10 +27,10 @@ class MovieLinesPresenterTest {
     private lateinit var mockMovieLinesSource: MovieLinesRepository
     private lateinit var mockMovieLinesUseCase: MovieLinesUseCase
     private lateinit var movieLinesPresenter: MovieLinesPresenterImpl
-    private lateinit var captor: ArgumentCaptor<Single<ResponseBody>>
 
     @Before
     fun setup() {
+        RxAndroidPlugins.setInitMainThreadSchedulerHandler { scheduler -> Schedulers.trampoline() }
         mockMovieLinesView = mock(MovieLinesView::class.java)
         mockMovieLinesSource = mock(MovieLinesSource::class.java)
         mockMovieLinesUseCase = mock(MovieLinesUseCase::class.java)
@@ -51,6 +56,25 @@ class MovieLinesPresenterTest {
         movieLinesPresenter.getMovieLines("", "")
         verify(mockMovieLinesUseCase).execute()
         verify(mockMovieLinesView).showLoading()
+    }
+
+
+    @Test
+    fun `should hide loading on error` () {
+        `when`(mockMovieLinesUseCase.execute()).thenReturn(Single.error<ResponseBody>(Throwable()))
+        movieLinesPresenter.getMovieLines("", "")
+        //verify(mockMovieLinesView).onError(Throwable())
+        verify(mockMovieLinesView).hideLoading()
+    }
+
+    @Test
+    fun `should load view onSuccess on success` () {
+        `when`(mockMovieLinesUseCase.execute()).thenReturn(Single.fromCallable({
+            ResponseBody(listOf())
+        }))
+        movieLinesPresenter.getMovieLines("", "")
+        verify(mockMovieLinesView).onSuccess(ResponseBody(listOf()))
+        verify(mockMovieLinesView).hideLoading()
     }
 
 }
