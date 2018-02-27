@@ -5,7 +5,4 @@ Best lines from the movies you love
 Screenshots
 ===========
 
-![Imgur](https://i.imgur.com/YrizB8Y.png)
-![Imgur](https://i.imgur.com/CjrxuUe.png)
-![Imgur](https://i.imgur.com/QAZAkum.png)
-![Imgur](https://i.imgur.com/uPEGm0C.png)
+![Imgur](https://i.imgur.com/07dfnx1m.png)     ![Imgur](https://i.imgur.com/Fxn0XEum.png)     ![Imgur](https://i.imgur.com/RhsqpWum.png)     ![Imgur](https://i.imgur.com/VFMAloUm.png)
